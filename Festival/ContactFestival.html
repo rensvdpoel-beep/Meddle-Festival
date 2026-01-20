@@ -134,6 +134,88 @@
   font-size: 18px;
 }
 
+/* ================= MOBILE HEADER + CONTACT FIX ================= */
+
+@media (max-width: 900px) {
+  header {
+    padding: 30px 15px 120px;
+  }
+
+  .header-logo {
+    width: 65px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .header-title {
+    font-size: 32px;
+    margin-top: 70px;
+  }
+
+  .subnav {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .subnav a {
+    font-size: 18px;
+  }
+
+  .social-box {
+    top: 10px;
+    right: 12px;
+  }
+
+  .social-text {
+    font-size: 14px;
+  }
+
+  .social-icons img {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* CONTACT LAYOUT → ONDER ELKAAR */
+  .contact-container {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 20px;
+    margin: 40px auto;
+  }
+
+  .contact-left {
+    order: 1;
+  }
+
+  .contact-right {
+    order: 2;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 780px) {
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-row strong {
+    margin-bottom: 6px;
+  }
+
+  .contact-row p,
+  .contact-row a {
+    font-size: 16px;
+  }
+
+  .contact-right img {
+    max-width: 300px;
+  }
+}
+
+
 h2 {
   font-size: 40px;
   margin-bottom: 30px;
