@@ -143,6 +143,60 @@
   margin-left: 10px; /* meer of minder naar wens */
 }
 
+/* 📱 MOBILE FIXES */
+@media (max-width: 820px) {
+
+  /* Header hoogte omlaag zodat alles past */
+  header {
+    padding: 20px 20px 120px;
+  }
+
+  /* Logo kleiner */
+  .header-logo {
+    width: 80px;
+    top: 15px;
+    left: 15px;
+  }
+
+  /* Titel kleiner en naar beneden zodat hij niet met socials botst */
+  .header-title {
+    font-size: 32px;
+    margin-top: 80px;
+  }
+
+  /* Subnav kleiner, dichter bij elkaar, en naar 2 rijen indien nodig */
+  .subnav {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .subnav a {
+    font-size: 20px;
+  }
+
+  /* Socials blok beter passend rechtsboven */
+  .social-block {
+    right: 10px;
+    top: 10px;
+    gap: 6px;
+  }
+
+  .social-text {
+    font-size: 12px;
+  }
+
+  .social-icons-inline img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .contact-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+
     /* MAIN */
     main {
       max-width: 1200px;
@@ -195,7 +249,7 @@
     <h1 class="header-title"><strong>Over Meddle Festival</h1>
 
     <nav class="subnav">
-      <a href="../Festival.html">Home</a>
+      <a href="https://www.meddlefestival.nl">Home</a>
       <a href="Foto's.html">Foto's</a>
       <a href="Sponsoring.html">Sponsoring</a>
 	  <a href="TimeTable.html">Programma</a>
@@ -267,8 +321,8 @@
     <div class="main-photos">
       <img src="../images/MeddleFest_Tent.jpg" alt="Festival sfeer">
       <img src="../images/Meddle_Tap.jpg" alt="Publiek">
-      <img src="../images/Meddle.jpg" alt="Podium">
-      <img src="../images/Meddle.jpg" alt="Avond sfeer">
+      <img src="../images/MeddleFest_Podium.jpg" alt="Podium">
+      <img src="../images/MeddleFest_Fusie.jpg" alt="Avond sfeer">
     </div>
 
   </div>
