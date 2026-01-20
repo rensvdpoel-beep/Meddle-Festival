@@ -300,6 +300,105 @@
     font-size: 0.95rem;
 }
 
+/* ================= MOBILE HEADER FIX ================= */
+
+@media (max-width: 900px) {
+  header {
+    padding: 30px 15px 120px;
+  }
+
+  .header-logo {
+    width: 70px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .header-title {
+    font-size: 32px;
+    margin-top: 70px;
+  }
+
+  .subnav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .subnav a {
+    font-size: 18px;
+  }
+
+  .social-block {
+    top: 10px;
+    right: 10px;
+  }
+
+  .social-text {
+    font-size: 13px;
+  }
+
+  .social-icons-inline img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .contact-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* ================= MOBILE TIMETABLE VOLGORDE ================= */
+
+@media (max-width: 900px) {
+
+  /* Stages onder elkaar */
+  .stage-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Zaterdag: Mainstage eerst */
+  .day-section:nth-of-type(1) .stage-main {
+    order: 1;
+  }
+
+  /* Zaterdag: Tweede stage */
+  .day-section:nth-of-type(1) .stage-second {
+    order: 2;
+  }
+
+  /* Zondag: Mainstage */
+  .day-section:nth-of-type(2) .stage-main {
+    order: 3;
+  }
+
+  /* Zondag: Tweede stage */
+  .day-section:nth-of-type(2) .stage-second {
+    order: 4;
+  }
+
+  /* Slots iets compacter op mobiel */
+  .slot {
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+  }
+
+  .slot-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .slot-artist {
+    font-size: 1.05rem;
+  }
+
+  .slot-info {
+    font-size: 0.9rem;
+  }
+}
+
+
 
 
     footer {
