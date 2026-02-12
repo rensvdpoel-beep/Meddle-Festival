@@ -126,13 +126,12 @@ main {
 .gallery img {
   width: 100%;
   height: 220px;
-  object-fit: contain;   /* 👈 dit is de magic */
-  background: #000;      /* optioneel: zwarte achtergrond */
+  object-fit: contain;
+  background: #000;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
 }
-
 
 .gallery img:hover {
   transform: scale(1.05);
@@ -147,6 +146,10 @@ main {
   z-index: 999;
   align-items: center;
   justify-content: center;
+}
+
+.lightbox.active {
+  display: flex;
 }
 
 .lightbox img {
@@ -202,94 +205,6 @@ main {
 #counter {
   font-size: 16px;
 }
-
-/* 📱 MOBILE FIXES */
-@media (max-width: 820px) {
-
-  /* Header compacter */
-  header {
-    padding: 20px 20px 120px;
-  }
-
-  /* Logo kleiner */
-  .header-logo {
-    width: 80px;
-    top: 15px;
-    left: 15px;
-  }
-
-  /* Titel kleiner en lager */
-  .header-title {
-    font-size: 32px;
-    margin-top: 80px;
-  }
-
-  /* Subnav netjes centreren + wrappen */
-  .subnav {
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .subnav a {
-    font-size: 20px;
-  }
-
-  /* Social block compacter */
-  .social-block {
-    right: 10px;
-    top: 10px;
-    gap: 6px;
-  }
-
-  .social-text {
-    font-size: 12px;
-  }
-
-  .social-icons-inline img {
-    width: 22px;
-    height: 22px;
-  }
-
-  .contact-btn {
-    padding: 5px 8px;
-    font-size: 12px;
-  }
-
-  /* Main iets compacter */
-  main {
-    padding: 20px;
-  }
-
-  /* Gallery netjes onder elkaar */
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery img {
-    height: auto;
-  }
-
-  /* Lightbox knoppen kleiner */
-  .nav-btn {
-    font-size: 30px;
-    padding: 15px 18px;
-  }
-
-  .bottom-bar {
-    bottom: 10px;
-    gap: 10px;
-    padding: 8px 12px;
-  }
-
-  .download-btn, .close-btn {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-}
-
-}
-
 </style>
 </head>
 
@@ -312,9 +227,9 @@ main {
   <div class="social-top">
     <span class="social-text">Check hier onze socials:</span>
     <span class="social-icons-inline">
-      <a href="#" target="_blank"><img src="../images/instagram.png"></a>
-      <a href="#" target="_blank"><img src="../images/facebook.png"></a>
-      <a href="#" target="_blank"><img src="../images/TikTok.png"></a>
+      <a href="#"><img src="../images/instagram.png"></a>
+      <a href="#"><img src="../images/facebook.png"></a>
+      <a href="#"><img src="../images/TikTok.png"></a>
     </span>
   </div>
   <div class="social-bottom">
@@ -322,7 +237,6 @@ main {
     <a class="contact-btn" href="/Festival/ContactFestival.html">Contact</a>
   </div>
 </div>
-
 </header>
 
 <main>
@@ -333,9 +247,7 @@ main {
 <div class="lightbox" id="lightbox">
   <button class="nav-btn left" onclick="prev()">❮</button>
   <button class="nav-btn right" onclick="next()">❯</button>
-
   <img id="lightbox-img">
-
   <div class="bottom-bar">
     <div id="counter"></div>
     <button class="download-btn" onclick="downloadImage()">⬇ Download</button>
@@ -353,7 +265,6 @@ const counter = document.getElementById("counter");
 let index = 0;
 let images = [];
 
-// Laad automatisch alle 171 foto's vanaf root
 for(let i=1; i<=totalImages; i++){
     const path = `fotos/Zaterdag2025/Image(${i}).jpg`;
     images.push(path);
@@ -367,11 +278,11 @@ for(let i=1; i<=totalImages; i++){
 function openLightbox(i){
   index = i;
   update();
-  lightbox.style.display = "flex";
+  lightbox.classList.add("active");
 }
 
 function closeLightbox(){
-  lightbox.style.display = "none";
+  lightbox.classList.remove("active");
 }
 
 function update(){
@@ -398,51 +309,14 @@ function downloadImage(){
   document.body.removeChild(link);
 }
 
-document.addEventListener("keydown", e => {
-  if(lightbox.style.display !== "flex") return;
-  if(e.key === "ArrowRight") next();
-  if(e.key === "ArrowLeft") prev();
-  if(e.key === "Escape") closeLightbox();
+/* KEYBOARD NAVIGATION */
+document.addEventListener("keydown", function(e) {
+  if (!lightbox.classList.contains("active")) return;
+
+  if (e.key === "ArrowRight") next();
+  if (e.key === "ArrowLeft") prev();
+  if (e.key === "Escape") closeLightbox();
 });
-
-// Swipe
-// ✅ Verbeterde swipe – werkt niet tijdens zoom
-let startX = 0;
-let startY = 0;
-let isSwiping = false;
-
-lightbox.addEventListener("touchstart", e => {
-
-  // Alleen swipen als er 1 vinger is
-  if (e.touches.length === 1) {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isSwiping = true;
-  } else {
-    isSwiping = false; // bij 2 vingers (zoom) swipe uit
-  }
-
-});
-
-lightbox.addEventListener("touchend", e => {
-
-  if (!isSwiping) return;
-
-  const endX = e.changedTouches[0].clientX;
-  const endY = e.changedTouches[0].clientY;
-
-  const diffX = startX - endX;
-  const diffY = Math.abs(startY - endY);
-
-  // Alleen horizontale swipe tellen
-  if (Math.abs(diffX) > 60 && diffY < 80) {
-    if (diffX > 0) next();
-    else prev();
-  }
-
-  isSwiping = false;
-});
-
 </script>
 
 </body>
