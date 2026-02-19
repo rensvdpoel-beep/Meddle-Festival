@@ -83,10 +83,27 @@
 
 @media (max-width: 780px) {
   .header-date {
-    top: 110px;
+    position: static !important;   /* NIET meer absoluut */
+    transform: none !important;
+    margin-top: 8px;
     font-size: 18px;
+    text-align: center;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-title {
+    position: static !important;
+    transform: none !important;
+    margin-top: 80px;
   }
 }
+
 
 
 
