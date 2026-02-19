@@ -20,16 +20,13 @@
       color:white;
     }
 	
-	.header-date {
-  position: absolute;
-  top: 100px; /* pas dit aan voor perfecte positie */
-  left: 50%;
-  transform: translateX(-50%);
+.header-date {
   font-size: 40px;
   margin: 0;
   color: white;
   text-shadow: 0 0 6px rgba(0,0,0,0.7);
 }
+
 
 
     .header-logo { width:140px; position:absolute; top:20px; left:20px; }
@@ -103,6 +100,17 @@
     margin-top: 80px;
   }
 }
+
+/* ===== DESKTOP (zoals het nu goed werkt) ===== */
+@media (min-width: 781px) {
+  .header-date {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 
 
 
