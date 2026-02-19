@@ -19,6 +19,18 @@
       position:relative;
       color:white;
     }
+	
+	.header-date {
+  position: absolute;
+  top: 100px; /* pas dit aan voor perfecte positie */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
+
 
     .header-logo { width:140px; position:absolute; top:20px; left:20px; }
     .header-title { position:absolute; top:25px; left:50%; transform:translateX(-50%); font-size:50px; margin:0; text-shadow:0 0 8px rgba(0,0,0,0.7); }
@@ -69,6 +81,14 @@
   }
 }
 
+@media (max-width: 780px) {
+  .header-date {
+    top: 110px;
+    font-size: 18px;
+  }
+}
+
+
 
 /* ===== FIX TITEL CENTREREN OP MOBIEL ===== */
 @media (max-width: 780px) {
@@ -110,6 +130,8 @@
   <header>
     <img src="images/MF_logo26-WIT.png" class="header-logo" alt="Festival logo">
     <h1 class="header-title">Meddle Festival 2026</h1>
+	<h2 class="header-date">22 t/m 24 Mei 2026</h2>
+
 
     <div class="social-block">
       <div class="social-top">
