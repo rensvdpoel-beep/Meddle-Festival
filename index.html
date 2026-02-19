@@ -20,18 +20,34 @@
       color:white;
     }
 	
-.header-date {
-  font-size: 40px;
+.header-title {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px;
   margin: 0;
-  color: white;
+  text-align: center;
+  width: 100%;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+
+.header-date {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
   text-shadow: 0 0 6px rgba(0,0,0,0.7);
 }
 
 
 
-    .header-logo { width:140px; position:absolute; top:20px; left:20px; }
-    .header-title { position:absolute; top:25px; left:50%; transform:translateX(-50%); font-size:50px; margin:0; text-shadow:0 0 8px rgba(0,0,0,0.7); }
 
+    .header-logo { width:140px; position:absolute; top:20px; left:20px; }
     .social-block {
       position:absolute; top:18px; right:22px; text-align:right; display:flex; flex-direction:column; gap:8px; z-index:50; align-items:flex-end;
     }
@@ -79,37 +95,14 @@
 }
 
 @media (max-width: 780px) {
-  .header-date {
-    position: static !important;   /* NIET meer absoluut */
-    transform: none !important;
-    margin-top: 8px;
-    font-size: 18px;
-    text-align: center;
+  .header-title {
+    font-size: 28px;
+    top: 70px;
   }
 
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-.header-title {
-  position: static !important;
-  transform: none !important;
-  margin-top: 80px;
-  text-align: center;
-  width: 100%;
-}
-
-
-/* ===== DESKTOP (zoals het nu goed werkt) ===== */
-@media (min-width: 781px) {
   .header-date {
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 16px;
+    top: 110px;
   }
 }
 
