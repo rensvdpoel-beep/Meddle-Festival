@@ -301,10 +301,33 @@ function prev(){
   update();
 }
 
-function downloadImage(){
+async function downloadImage(){
+  const imageUrl = images[index];
+
+  try {
+    const response = await fetch(imageUrl);
+    const blob = await response.blob();
+
+    const file = new File(
+      [blob],
+      imageUrl.split("/").pop(),
+      { type: blob.type }
+    );
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        files: [file],
+        title: file.name
+      });
+      return;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
   const link = document.createElement("a");
-  link.href = images[index];
-  link.download = images[index].split("/").pop();
+  link.href = imageUrl;
+  link.download = imageUrl.split("/").pop();
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
